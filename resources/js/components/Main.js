@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Header from './common/Header';
+import Footer from './common/Footer';
 import Home from './home/Home';
 //import SignUp from './signup/SignUp';
 import Checkout from './signup/Checkout';
 import Results from './results/Results';
 import Contact from './pages/Contact';
-
 
 export default class App extends Component {
     render() {
@@ -22,6 +22,7 @@ export default class App extends Component {
                     <Route path="/results/:year" component={Results} />
                     <Route path="/contact" component={Contact} />
                 </Switch>
+                <Footer />
             </React.Fragment>
         );
     }
