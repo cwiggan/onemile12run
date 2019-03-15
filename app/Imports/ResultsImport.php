@@ -41,7 +41,7 @@ class ResultsImport implements ToModel, WithHeadingRow
             'distance' => $row['distance'],
             'laps' => $row['laps'],
             'age_group' => $row['ag'] ?? '',
-            'bib' => $row['bib'] ?? '',
+            'bid' => $row['bib'] ?? '',
             'year' => $this->year,
             'gender' => $gender[$row['gender']],
             'time' => $row['time'] ?? '00:00:00'
