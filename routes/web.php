@@ -27,6 +27,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/results', 'ResultsController@index');
     Route::get('/results/add', 'ResultsController@add');
     Route::post('/results/create', 'ResultsController@create');
+    Route::get('/results/remove/{year}', 'ResultsController@remove');
 });
 //});
 Route::post('saveform', 'PageController@register');
