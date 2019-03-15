@@ -34,6 +34,11 @@ class ResultsController extends Controller
     public function create(Request $request) {
         $path = $request->file('filecsv')->store('uploads');
         (new ResultsImport($request->input('year')))->import($path, null, \Maatwebsite\Excel\Excel::CSV);
-        //Excel::import(new ResultsImport($request->input('year')), request()->file('file'));
+    }
+
+    public function remove($year)
+    {
+        echo $year;
+        RaceResult::where('year', $year)->delete();
     }
 }
