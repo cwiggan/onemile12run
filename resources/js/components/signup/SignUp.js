@@ -57,10 +57,14 @@ class SignUp extends React.Component {
             emergency_phone: Yup.string()
                 .required('Enter Emergency Contact Phone')
         });
+        const StepSchemaThree = Yup.object().shape({
+            consent: Yup.bool()
+                .required('You have to agree with our Terms and Conditions'),
+        });
         return (
 
                 <div className="container-fluid raceinfo">
-                    <Title text='Sign Up'/>
+                    <Title text='Sign Up For The 12 Hour Endurance Run'/>
                     <div className="row">
                     <div className="col-6">
                     <div className="card">
@@ -81,6 +85,7 @@ class SignUp extends React.Component {
                                 phone: '',
                                 gender: '',
                                 t_shirt: '',
+                                consent: '',
                                 stripe: null
                             }}
                             onSubmit={(values, actions) => {
@@ -89,7 +94,7 @@ class SignUp extends React.Component {
                                     values.stripe = token.id;
 
                                     axios.post('/saveform',values).then((res) => {
-                                        console.log(res);
+                                        //console.log(res);
                                         if (res.data.success) {
                                             this.setState({
                                                 thankYou: true,
@@ -256,7 +261,7 @@ class SignUp extends React.Component {
                                     <ErrorMessage name="t_shirt" component="div" className="field-error"/>
                                 </div>
                             </Wizard.Page>
-                            <Wizard.Page>
+                            <Wizard.Page schema={StepSchemaThree}>
                                 <div>
                                     <h3>PARTICIPANT WAIVER AND RELEASE OF LIABILITY, ASSUMPTION OF RISK AND INDEMNITY
                                         AGREEMENT</h3>
@@ -346,11 +351,19 @@ class SignUp extends React.Component {
                                         records
                                         as necessary.
                                     </p>
+                                    <div className="form-check">
+                                        <Field name="consent" component="input" type="checkbox" className="form-check-input" />
+                                        <label className="form-check-label" htmlFor="consent">
+                                            I agree to the Liability Waiver
+                                        </label>
+                                        <ErrorMessage name="consent" component="div" className="field-error"/>
+                                    </div>
                                 </div>
                             </Wizard.Page>
                             <Wizard.Page>
                                 <div className="form-group">
-                                    <label>Enter your credit card information</label>
+                                    <h3>Total: $65</h3>
+                                    <label>Enter your credit card information </label>
                                     <CardElement
                                         style={{base: {fontSize: '18px'}}}
                                         onChange={this.changeCard}
@@ -364,10 +377,15 @@ class SignUp extends React.Component {
                     <div className="col-sm">
                         <div className="row">
                             <div className="col">
-                                <p>Come run as much or as little as you want over the course of 12 hours. &nbsp;The race consists of multiple laps of a 1.5 mile loop, &nbsp;in Chesapeake VA Oak Grove Lake Park, which provides a mixture of panoramic views of the lake, as well as forested and wildlife. The tree-lined course is flat and is completely unpaved.&nbsp;There will be one aid station at the start of the race. &nbsp;The race will be limited to 50 runners. &nbsp;There will be no waitlist. &nbsp;If you have questions about the race, please e-mail the race director.</p>
+                                <ul className="list-group mb-3">
+                                    <li className="list-group-item"><string>Price:</string> $65.00</li>
+                                    <li className="list-group-item"><strong>Date:</strong> August 11, 2018</li>
+                                    <li className="list-group-item"><strong>Time:</strong> 7AM - 7PM</li>
+                                    <li className="list-group-item"><strong>Location:</strong> Oak Grove Lake Park</li>
+                                </ul>
+                                <p>Come run as much or as little as you want over the course of 12 hours. &nbsp;The race consists of multiple laps of a 1.5 mile loop, &nbsp;in Chesapeake VA Oak Grove Lake Park, which provides a mixture of panoramic views of the lake, as well as forested and wildlife. The tree-lined course is flat and is completely unpaved.&nbsp;There will be one aid station at the start of the race. &nbsp;The race will be limited to 60 runners. &nbsp;There will be no waitlist. &nbsp;If you have questions about the race, please e-mail the race director.</p>
                                 <h3>Includes:</h3>
                                 <p>T-shirts will be provided to all participants.</p>
-                                <p>***Race Limited to 60 people**</p>
                             </div>
                             <div className="col">
                                 <h3>Awards:</h3>

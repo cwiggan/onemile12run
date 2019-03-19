@@ -20,20 +20,30 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        @auth
         <ul class="navbar-nav">
             <li class="nav-item active">
                 <a class="nav-link" href="/">Home</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/sign-up">Sign Up</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="signupDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sign Ups
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="signupDropdown">
+                    <a class="dropdown-item" href="/admin/signups/add">Add Sign Up</a>
+                    <a class="dropdown-item" href="/admin/signups">View Sign Ups</a>
+                </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Results</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="resultsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Results
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="resultsDropdown">
+                    <a class="dropdown-item" href="/admin/results/add">Add Results</a>
+                    <a class="dropdown-item" href="/admin/results">View Results</a>
+                </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Contact</a>
-            </li>
-            @auth
+
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }} <span class="caret"></span>
@@ -56,6 +66,11 @@
     </div>
     </div>
 </nav>
+@if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
 @yield('content')
 <footer>
     Footer

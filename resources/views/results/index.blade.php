@@ -16,6 +16,7 @@
                                 <th scope="col">First</th>
                                 <th scope="col">Last</th>
                                 <th scope="col">Distance</th>
+                                <th scope="col">Year</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -25,6 +26,7 @@
                                 <td>{{ $result->first_name }}</td>
                                 <td>{{ $result->last_name }}</td>
                                 <td>{{ $result->distance }}</td>
+                                <td>{{ $result->year }}</td>
                             </tr>
                         @endforeach
                             </tbody>

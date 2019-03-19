@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
-const Header = () => (
+const Header = (props) => (
     <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
             <Link to="/" className="navbar-brand"><img src={'/img/1milesmile.png'} height="50" /></Link>
@@ -10,17 +10,17 @@ const Header = () => (
             </button>
             <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul className="navbar-nav">
-                    <li className="nav-item active">
-                        <Link to="/" className="nav-link">Home</Link>
+                    <li className="nav-item">
+                        <NavLink to="/" className="nav-link" activeClassName="active">Home</NavLink>
                     </li>
                     <li className="nav-item">
-                        <Link to="/sign-up" className="nav-link">Sign Up</Link>
+                        <NavLink to="/sign-up" className="nav-link">Sign Up</NavLink>
                     </li>
                     <li className="nav-item">
-                        <Link to="/results" className="nav-link">Results</Link>
+                        <NavLink to="/results" className="nav-link">Results</NavLink>
                     </li>
                     <li className="nav-item">
-                        <Link to="/contact" className="nav-link">Contact</Link>
+                        <NavLink to="/contact" className="nav-link">Contact</NavLink>
                     </li>
                 </ul>
             </div>

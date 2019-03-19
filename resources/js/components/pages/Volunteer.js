@@ -4,28 +4,32 @@ import Title from '../common/Title';
 import * as Yup from 'yup';
 import axios from 'axios';
 
-const Volunteer = (props) => {
+const Contact = (props) => {
     return (
         <div className="container-fluid raceinfo">
             <div className="row">
                 <div className="col">
-                    <Title text='Contact Us'/>
+                    <Title text='Volunteer Sign Up'/>
                     <Formik
                         initialValues={{
                             name: '',
                             message: '',
                             email: '',
+                            phone: '',
+                            shirt: ''
                         }}
                         validationSchema={Yup.object().shape({
                             email: Yup.string()
                                 .email('Invalid email address')
                                 .required('Required'),
                             name: Yup.string().required('Required'),
+                            phone: Yup.string().required('Required'),
+                            shirt: Yup.string().required('Required'),
                             message: Yup.string().required('Required'),
                         })}
                         onSubmit={(values, actions) => {
                             actions.setSubmitting(false);
-                            axios.post('/volunteer', values).then((res) => {
+                            axios.post('/emailForm', values).then((res) => {
                                 if (res.data.success) {
                                     actions.setSubmitting(true);
                                 }
@@ -44,11 +48,6 @@ const Volunteer = (props) => {
                                                     events. Questions are usually answered within 24 hours
                                                     (Monday-Friday), but response times may be longer during an event
                                                     week.
-                                                </p>
-                                                <p>
-                                                    <strong>SPONSORSHIP OPPORTUNITIES</strong><br/>
-                                                    For sponsorship or advertising opportunities, please email
-                                                    partnership@1milewithasmile.com
                                                 </p>
                                                 {isSubmitting ?
                                                     <div class="alert alert-success" role="alert">
@@ -73,6 +72,23 @@ const Volunteer = (props) => {
                                                     <ErrorMessage name="email" component="div" className="field-error"/>
                                                 </div>
                                                 <div className="form-group">
+                                                    <label htmlFor="phone">Phone</label>
+                                                    <Field name="phone" placeholder="your phone" type="phone"
+                                                           className="form-control"/>
+                                                    <ErrorMessage name="phone" component="div" className="field-error"/>
+                                                </div>
+                                                <div className="form-group">
+                                                    <label>T-Shirt Size</label>
+                                                    <Field name="shirt" component="select" className="form-control">
+                                                        <option value="">Select a Size</option>
+                                                        <option value="s">Small</option>
+                                                        <option value="m">Medium</option>
+                                                        <option value="l">Large</option>
+                                                        <option value="xl">XLarge</option>
+                                                    </Field>
+                                                    <ErrorMessage name="shirt" component="div" className="field-error"/>
+                                                </div>
+                                                <div className="form-group">
                                                     <label htmlFor="message">Message</label>
                                                     <Field name="message" component="textarea" placeholder="Message"
                                                            type="email" className="form-control"/>
@@ -95,4 +111,4 @@ const Volunteer = (props) => {
     )
 };
 
-export default Volunteer;
+export default Contact;

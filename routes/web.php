@@ -28,10 +28,13 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/results/add', 'ResultsController@add');
     Route::post('/results/create', 'ResultsController@create');
     Route::get('/results/remove/{year}', 'ResultsController@remove');
+    Route::get('/signups', 'SignUpController@index');
+    Route::get('/signup/{id}/edit', 'SignUpController@edit');
 });
 //});
 Route::post('saveform', 'PageController@register');
-Route::get('getresults/{year}', 'PageController@getResults');
+Route::post('emailForm', 'PageController@contact');
+Route::get('getresults/{year?}', 'PageController@getResults');
 Auth::routes(['register' => false]);
 Route::get('/{catchall?}', 'PageController@index')->where('catchall', '^(?!race).*$')->name('administration');
 //Route::get('/home', 'HomeController@index')->name('home');

@@ -9,6 +9,7 @@ use App\SignUp;
 use App\RaceResult;
 use App\Mail\RaceSignUpd;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactUs;
 
 class PageController extends Controller
 {
@@ -37,31 +38,36 @@ class PageController extends Controller
     /*
      * Home page
      */
-    public function contact()
+    public function contact(Request $request)
     {
-        return view('payment');
+        Mail::to('hello@1milewithasmile.com')->send(new ContactUs($request->all()));
+
+        return response()->json([
+            'success' => true,
+            'message' => 'success'
+        ]);
     }
     /*
  * Home page
  */
     public function register(Request $request)
     {
-
-        /*$request->validate([
+        $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required|email',
-            'phone' => 'required|date',
+            'phone' => 'required',
             'address' => 'required',
             'city' => 'required',
             'state' => 'required',
             'zip_code' => 'required',
             //'birth_date' => 'required|date',
-            'gender' => 'required|date',
+            'gender' => 'required',
             'emergency_name' => 'required',
             'emergency_phone' => 'required',
             't_shirt' => 'required',
-        ]);*/
+            'stripe' => 'required'
+        ]);
 
         $transaction_id = $this->pay($request->stripe);
 
@@ -104,9 +110,7 @@ class PageController extends Controller
         }
     }
 
-    public function getResults($year) {
-        //$results = RaceResult::orderBy('distance', 'desc');
-        //echo $year;
+    public function getResults($year=2018) {
         if ($year != 'all') {
             $results = RaceResult::where('year', $year)->orderBy('distance', 'desc')->get();
         } else {

@@ -8,10 +8,26 @@ class Results extends Component {
     state = {
         results: [],
         filterResults: [],
+        column: 'first_name',
         search: ''
     };
     componentDidMount() {
-        const { year = 2018 } = this.props.match.params;
+        this.updateResults();
+    }
+    componentDidUpdate() {
+        this.updateResults();
+    }
+    handleFilter = (e) => {
+        this.setState({
+            search: e.target.value,
+            column: e.target.name
+        })
+    }
+    updateResults() {
+        let { year } = this.props.data.match.params;
+        if (!year) {
+            year = 2018
+        }
         axios.get(`/getresults/`+ year)
             .then(res => {
                 this.setState({
@@ -19,15 +35,13 @@ class Results extends Component {
                 });
             });
     }
-    handleFilter = (e) => {
-        console.log(e);
-        this.setState({
-            search: e.target.value
-        })
-    }
     render() {
         const filterResults = this.state.results.filter((result) => {
-            return result.first_name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
+            if (this.state.column == 'first_name') {
+                return result.first_name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
+            } else {
+                return result.last_name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
+            }
         });
         return (
             <div className="container-fluid raceinfo">
@@ -35,8 +49,8 @@ class Results extends Component {
                 <div className="row">
                     <div className="col-3">
                         <div className="list-group">
-                            <Link to="/results" className="list-group-item list-group-item-action" activeClassName="active">2018 Results</Link>
-                            <Link to="/results/2017" className="list-group-item list-group-item-action" activeClassName="active">2017 Results</Link>
+                            <Link to="/results/2018" className="list-group-item list-group-item-action">2018 Results</Link>
+                            <Link to={'/results/2017'} className="list-group-item list-group-item-action">2017 Results</Link>
                         </div>
                         <form className="mt-5">
                             <h3>Filter Results</h3>
@@ -46,9 +60,8 @@ class Results extends Component {
                             </div>
                             <div className="form-group">
                                 <label htmlFor="firstname">First Name</label>
-                                <input type="password" className="form-control" id="firstname" name="first_name" placeholder="First Name"/>
+                                <input type="password" className="form-control" id="firstname" name="first_name" placeholder="First Name" onChange={this.handleFilter}/>
                             </div>
-                            <button type="submit" className="btn btn-warning">Search</button>
                         </form>
                     </div>
                     <div className="col-9">
