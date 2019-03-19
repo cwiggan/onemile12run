@@ -51,7 +51,7 @@ const Volunteer = (props) => {
                                                     partnership@1milewithasmile.com
                                                 </p>
                                                 {isSubmitting ?
-                                                    <div class="alert alert-success" role="alert">
+                                                    <div className="alert alert-success" role="alert">
                                                         Thanks for contacting us! We will be in touch with you shortly.
                                                     </div> : null}
                                             </div>
