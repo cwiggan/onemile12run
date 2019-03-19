@@ -34,6 +34,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 //});
 Route::post('saveform', 'PageController@register');
 Route::post('emailForm', 'PageController@contact');
+Route::post('volunteerAdd', 'PageController@contact');
 Route::get('getresults/{year?}', 'PageController@getResults');
 Auth::routes(['register' => false]);
 Route::get('/{catchall?}', 'PageController@index')->where('catchall', '^(?!race).*$')->name('administration');

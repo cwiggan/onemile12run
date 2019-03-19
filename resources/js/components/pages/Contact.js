@@ -25,7 +25,7 @@ const Volunteer = (props) => {
                         })}
                         onSubmit={(values, actions) => {
                             actions.setSubmitting(false);
-                            axios.post('/volunteer', values).then((res) => {
+                            axios.post('/emailForm', values).then((res) => {
                                 if (res.data.success) {
                                     actions.setSubmitting(true);
                                 }

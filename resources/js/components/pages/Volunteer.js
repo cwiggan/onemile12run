@@ -29,7 +29,7 @@ const Contact = (props) => {
                         })}
                         onSubmit={(values, actions) => {
                             actions.setSubmitting(false);
-                            axios.post('/emailForm', values).then((res) => {
+                            axios.post('/volunteerAdd', values).then((res) => {
                                 if (res.data.success) {
                                     actions.setSubmitting(true);
                                 }
@@ -89,7 +89,7 @@ const Contact = (props) => {
                                                     <ErrorMessage name="shirt" component="div" className="field-error"/>
                                                 </div>
                                                 <div className="form-group">
-                                                    <label htmlFor="message">Message</label>
+                                                    <label htmlFor="message">Comments</label>
                                                     <Field name="message" component="textarea" placeholder="Message"
                                                            type="email" className="form-control"/>
                                                     <ErrorMessage name="message" component="div"

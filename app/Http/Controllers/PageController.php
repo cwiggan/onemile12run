@@ -10,6 +10,7 @@ use App\RaceResult;
 use App\Mail\RaceSignUpd;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactUs;
+use App\Mail\Volunteer;
 
 class PageController extends Controller
 {
@@ -40,13 +41,27 @@ class PageController extends Controller
      */
     public function contact(Request $request)
     {
-        Mail::to('hello@1milewithasmile.com')->send(new ContactUs($request->all()));
+        Mail::to('info@1milewithasmile.com')->send(new ContactUs($request->all()));
 
         return response()->json([
             'success' => true,
             'message' => 'success'
         ]);
     }
+
+    /*
+   * Home page
+   */
+    public function volunteer(Request $request)
+    {
+        Mail::to('info@1milewithasmile.com')->send(new Volunteer($request->all()));
+
+        return response()->json([
+            'success' => true,
+            'message' => 'success'
+        ]);
+    }
+
     /*
  * Home page
  */
