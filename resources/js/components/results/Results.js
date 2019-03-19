@@ -47,7 +47,7 @@ class Results extends Component {
             <div className="container-fluid raceinfo">
                 <Title text='Results'/>
                 <div className="row">
-                    <div className="col-3">
+                    <div className="col-12 col-md-3">
                         <div className="list-group">
                             <Link to="/results/2018" className="list-group-item list-group-item-action">2018 Results</Link>
                             <Link to={'/results/2017'} className="list-group-item list-group-item-action">2017 Results</Link>
@@ -64,7 +64,7 @@ class Results extends Component {
                             </div>
                         </form>
                     </div>
-                    <div className="col-9">
+                    <div className="col-12 col-md-9">
                         <table className="table">
                             <thead>
                             <tr>

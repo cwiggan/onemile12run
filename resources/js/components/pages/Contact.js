@@ -36,7 +36,7 @@ const Volunteer = (props) => {
                         render={({ isSubmitting, status }) => (
                             <Form>
                                 <div className="row">
-                                    <div className="col-5">
+                                    <div className="col-12 col-md-5">
                                         <div className="card">
                                             <div className="card-body">
                                                 <p>
@@ -57,7 +57,7 @@ const Volunteer = (props) => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-7">
+                                    <div className="col-12 col-md-7">
                                         <div className="card">
                                             <div className="card-body">
                                                 <div className="form-group">

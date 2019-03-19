@@ -66,7 +66,7 @@ class SignUp extends React.Component {
                 <div className="container-fluid raceinfo">
                     <Title text='Sign Up For The 12 Hour Endurance Run'/>
                     <div className="row">
-                    <div className="col-6">
+                    <div className="col-12 col-md-6">
                     <div className="card">
                         {this.state.thankYou ? (
                             <ThankYou data={this.state.confirm}/>
@@ -374,7 +374,7 @@ class SignUp extends React.Component {
                         )}
                     </div>
                     </div>
-                    <div className="col-sm">
+                    <div className="col-12 col-md-6">
                         <div className="row">
                             <div className="col">
                                 <ul className="list-group mb-3">
