@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Title from '../common/Title';
 import Result from './Result';
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import axios from 'axios';
 
 class Results extends Component {
@@ -9,7 +9,8 @@ class Results extends Component {
         results: [],
         filterResults: [],
         column: 'first_name',
-        search: ''
+        search: '',
+        year: 2018
     };
     componentDidMount() {
         this.updateResults();
@@ -32,6 +33,7 @@ class Results extends Component {
             .then(res => {
                 this.setState({
                     results: res.data.results,
+                    year: year
                 });
             });
     }
@@ -43,17 +45,19 @@ class Results extends Component {
                 return result.last_name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
             }
         });
+
         return (
             <div className="container-fluid raceinfo">
                 <Title text='Results'/>
                 <div className="row">
                     <div className="col-12 col-md-3">
                         <div className="list-group">
-                            <Link to="/results/2018" className="list-group-item list-group-item-action active">2018 Results</Link>
-                            <Link to={'/results/2017'} className="list-group-item list-group-item-action">2017 Results</Link>
+                            <NavLink to="/results/2018" className="list-group-item list-group-item-action" activeClassName="active">2018 Results</NavLink>
+                            <NavLink to="/results/2017" className="list-group-item list-group-item-action" activeClassName="active">2017 Results</NavLink>
                         </div>
                         <form className="mt-5">
                             <h4 className="mt-3">Filter Results</h4>
+                            <hr/>
                             <div className="form-group">
                                 <label htmlFor="lastname">Last Name</label>
                                 <input type="text" className="form-control" id="lastname" name="last_name" placeholder="Last Name" onChange={this.handleFilter}/>

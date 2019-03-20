@@ -67,16 +67,16 @@ class Wizard extends React.Component {
                             {page > 0 && (
                                 <button
                                     type="button"
-                                    className="btn btn-warning mr-2"
+                                    className="btn btn-dark mr-2"
                                     onClick={this.previous}
                                 >
                                     « Previous
                                 </button>
                             )}
 
-                            {!isLastPage && <button className="btn btn-warning" type="submit">Continue</button>}
+                            {!isLastPage && <button className="btn btn-dark" type="submit">Continue</button>}
                             {isLastPage && isComplete && (
-                                <button type="submit" className="btn btn-warning" disabled={isSubmitting}>
+                                <button type="submit" className="btn btn-dark" disabled={isSubmitting}>
                                     Submit
                                 </button>
                             )}

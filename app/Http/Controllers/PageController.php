@@ -11,6 +11,8 @@ use App\Mail\RaceSignUpd;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactUs;
 use App\Mail\Volunteer;
+use App\Volunteers;
+use App\Contacts;
 
 class PageController extends Controller
 {
@@ -41,6 +43,12 @@ class PageController extends Controller
      */
     public function contact(Request $request)
     {
+        $contact = new Contacts;
+        $contact->name = $request->input('name');
+        $contact->email = $request->input('email');
+        $contact->message = $request->input('message');
+        $contact->save();
+
         Mail::to('info@1milewithasmile.com')->send(new ContactUs($request->all()));
 
         return response()->json([
@@ -54,8 +62,15 @@ class PageController extends Controller
    */
     public function volunteer(Request $request)
     {
-        Mail::to('info@1milewithasmile.com')->send(new Volunteer($request->all()));
-
+        //Mail::to('info@1milewithasmile.com')->send(new Volunteer($request->all()));
+        $volunteer = new Volunteers;
+        $volunteer->name = $request->input('name');
+        $volunteer->email = $request->input('email');
+        $volunteer->phone = $request->input('phone');
+        $volunteer->t_shirt = $request->input('shirt');
+        $volunteer->comments = $request->input('message');
+        $volunteer->year = date('Y');
+        $volunteer->save();
         return response()->json([
             'success' => true,
             'message' => 'success'
