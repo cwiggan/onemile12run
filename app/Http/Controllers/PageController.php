@@ -76,7 +76,7 @@ class PageController extends Controller
             'city' => 'required',
             'state' => 'required',
             'zip_code' => 'required',
-            //'birth_date' => 'required|date',
+            'birth_date' => 'required|date',
             'gender' => 'required',
             'emergency_name' => 'required',
             'emergency_phone' => 'required',
@@ -96,7 +96,7 @@ class PageController extends Controller
             $signUp->city = $request->input('city');
             $signUp->state = $request->input('state');
             $signUp->zip_code = $request->input('zip_code');
-            $signUp->birth_date = date('Y-m-9 H:i:s');
+            $signUp->birth_date = $request->birth_date;
             $signUp->gender = $request->input('gender');
             $signUp->t_shirt = $request->input('t_shirt');
             $signUp->emergency_phone = $request->input('emergency_phone');
@@ -134,6 +134,15 @@ class PageController extends Controller
 
         return response()->json([
             'results' => $results
+        ]);
+    }
+
+    public function countSignUp() {
+        $count = SignUp::where('race_id', 1)->get()->count();
+        $status = $count <= 60 ? true : false;
+
+        return response()->json([
+            'status' => $status
         ]);
     }
 }

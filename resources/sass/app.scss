@@ -308,13 +308,24 @@ div.raceinfo{
     color: orangered;
   }
   .field-error {
-    color: red;
+    color: #f26522;
   }
   .list-group-item.active {
     background-color: rgb(255,220,58);
     border-color: rgb(255,220,58);
     color: #000;
   }
+  .list-group {
+    background: #ffdc3a;
+  }
+  .list-group-item {
+    background: transparent;
+    border: 1px solid #f8fafc;
+  }
+}
+.btn-warning{
+  background: #ffdc3a;
+  color: #333;
 }
 @media (max-width: 1100px){
   .hero_img div.overlay{

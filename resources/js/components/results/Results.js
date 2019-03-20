@@ -49,11 +49,11 @@ class Results extends Component {
                 <div className="row">
                     <div className="col-12 col-md-3">
                         <div className="list-group">
-                            <Link to="/results/2018" className="list-group-item list-group-item-action">2018 Results</Link>
+                            <Link to="/results/2018" className="list-group-item list-group-item-action active">2018 Results</Link>
                             <Link to={'/results/2017'} className="list-group-item list-group-item-action">2017 Results</Link>
                         </div>
                         <form className="mt-5">
-                            <h3>Filter Results</h3>
+                            <h4 className="mt-3">Filter Results</h4>
                             <div className="form-group">
                                 <label htmlFor="lastname">Last Name</label>
                                 <input type="text" className="form-control" id="lastname" name="last_name" placeholder="Last Name" onChange={this.handleFilter}/>

@@ -12,7 +12,8 @@ class SignUp extends React.Component {
     state = {
         isSubmitting: false,
         thankYou: false,
-        confirm: []
+        confirm: [],
+        status: true,
     };
     changeCard = (event) => {
         console.log(event);
@@ -24,6 +25,14 @@ class SignUp extends React.Component {
             isSubmitting: status
         });
     };
+    componentDidMount() {
+        axios.get(`/countSignup`)
+            .then(res => {
+                this.setState({
+                    status: res.data.status,
+                });
+            });
+    }
     render() {
         const StepOneSchema = Yup.object().shape({
             first_name: Yup.string()
@@ -40,6 +49,8 @@ class SignUp extends React.Component {
             phone: Yup.string()
                 .min(10, 'Must Be ten digits')
                 .required('Enter Your Phone'),
+            birth_date: Yup.date()
+                .required('Enter your Birthday'),
         });
         const StepSchemaTwo = Yup.object().shape({
             address: Yup.string()
@@ -71,6 +82,7 @@ class SignUp extends React.Component {
                         {this.state.thankYou ? (
                             <ThankYou data={this.state.confirm}/>
                         ) : (
+                            this.state.status ? (
                         <Wizard
                             initialValues={{
                                 email: '',
@@ -86,6 +98,7 @@ class SignUp extends React.Component {
                                 gender: '',
                                 t_shirt: '',
                                 consent: '',
+                                birth_date: '',
                                 stripe: null
                             }}
                             onSubmit={(values, actions) => {
@@ -170,6 +183,17 @@ class SignUp extends React.Component {
                                         className="form-control"
                                     />
                                     <ErrorMessage name="email" component="div" className="field-error"/>
+                                </div>
+                                <div className="form-group">
+                                    <label>Date of Birth</label>
+                                    <Field
+                                        name="birth_date"
+                                        component="input"
+                                        type="date"
+                                        placeholder="Date"
+                                        className="form-control"
+                                    />
+                                    <ErrorMessage name="birth_date" component="div" className="field-error"/>
                                 </div>
 
                             </Wizard.Page>
@@ -371,6 +395,10 @@ class SignUp extends React.Component {
                                 </div>
                             </Wizard.Page>
                         </Wizard>
+                            ) : (
+                                <h3>Registarion is Close for the 12 Hour Race</h3>
+                            )
+
                         )}
                     </div>
                     </div>
@@ -379,7 +407,7 @@ class SignUp extends React.Component {
                             <div className="col">
                                 <ul className="list-group mb-3">
                                     <li className="list-group-item"><string>Price:</string> $65.00</li>
-                                    <li className="list-group-item"><strong>Date:</strong> August 11, 2018</li>
+                                    <li className="list-group-item"><strong>Date:</strong> August 10, 2019</li>
                                     <li className="list-group-item"><strong>Time:</strong> 7AM - 7PM</li>
                                     <li className="list-group-item"><strong>Location:</strong> Oak Grove Lake Park</li>
                                 </ul>
@@ -388,12 +416,12 @@ class SignUp extends React.Component {
                                 <p>T-shirts will be provided to all participants.</p>
                             </div>
                             <div className="col">
-                                <h3>Awards:</h3>
+                                <h5 className="mb-3">Awards:</h5>
                                 <ul className="list-group">
                                     <li className="list-group-item">Most Miles Male</li>
                                     <li className="list-group-item">Most Miles Female</li>
                                 </ul>
-                                <h4 className="mt-2">Age Group Winners</h4>
+                                <h5 className="mt-3 mb-3">Age Group Winners</h5>
                                 <ul className="list-group">
                                     <li className="list-group-item">64 and older</li>
                                     <li className="list-group-item">53-63</li>

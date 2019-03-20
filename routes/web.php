@@ -36,6 +36,7 @@ Route::post('saveform', 'PageController@register');
 Route::post('emailForm', 'PageController@contact');
 Route::post('volunteerAdd', 'PageController@volunteer');
 Route::get('getresults/{year?}', 'PageController@getResults');
+Route::get('countSignup', 'PageController@countSignUp');
 Auth::routes(['register' => false]);
 Route::get('/{catchall?}', 'PageController@index')->where('catchall', '^(?!race).*$')->name('administration');
 //Route::get('/home', 'HomeController@index')->name('home');
