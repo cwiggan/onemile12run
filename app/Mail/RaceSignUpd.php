@@ -29,6 +29,6 @@ class RaceSignUpd extends Mailable
      */
     public function build()
     {
-        return $this->from('hello@1milewithasmile.com')->subject('Sign Up Confirmation')->view('mail.signup');
+        return $this->from('info@1milewithasmile.com')->subject('!2 Hour Run Sign Up Confirmation')->view('mail.signup');
     }
 }
