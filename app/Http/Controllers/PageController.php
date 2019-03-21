@@ -31,7 +31,7 @@ class PageController extends Controller
 
         $charge = Stripe::charges()->create([
             'currency' => 'USD',
-            'amount'   => 65.00,
+            'amount'   => 1.00,
             'source'   => $payment
         ]);
 
