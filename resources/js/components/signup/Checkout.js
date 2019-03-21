@@ -4,7 +4,7 @@ import SignUp from './SignUp';
 
 const Checkout = () => {
     return (
-        <StripeProvider apiKey="pk_live_fVbRODvNz7PrhvY3Nz4AIYdC">
+        <StripeProvider apiKey="pk_test_Qg4NbRlWHmp6jV7tk7UZgl8F">
             <Elements>
                 <SignUp />
             </Elements>

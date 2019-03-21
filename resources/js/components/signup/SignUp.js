@@ -17,7 +17,7 @@ class SignUp extends React.Component {
         loading: false,
     };
     changeCard = (event) => {
-        console.log(event);
+        //console.log(event);
         let status = false;
         if (event.complete && !event.error) {
             status = true
@@ -105,13 +105,12 @@ class SignUp extends React.Component {
                             }}
                             onSubmit={(values, actions) => {
                                 this.props.stripe.createToken({name: values.first_name }).then(({token}) => {
-                                    console.log('Received Stripe token:', token.id);
+                                    //console.log('Received Stripe token:', token.id);
                                     values.stripe = token.id;
 
                                     this.setState({ loading: true });
 
                                     axios.post('/saveform',values).then((res) => {
-                                        //console.log(res);
                                         if (res.data.success) {
                                             this.setState({
                                                 thankYou: true,
@@ -120,14 +119,11 @@ class SignUp extends React.Component {
                                             });
                                         }
                                     }).catch((error) => {
-                                        console.log(error.response);
+                                        actions.setSubmitting(false);
+                                        actions.setFieldError("stripe", error.response.data.message);
+                                        this.setState({ loading: false });
                                     });
                                 });
-
-                                /*sleep(300).then(() => {
-                                    window.alert(JSON.stringify(values, null, 2));
-                                    actions.setSubmitting(false);
-                                });*/
                             }}
                             isComplete={this.state.isSubmitting}
                         >
@@ -396,6 +392,11 @@ class SignUp extends React.Component {
                                     <CardElement
                                         style={{base: {fontSize: '18px'}}}
                                         onChange={this.changeCard}
+                                    />
+                                    <ErrorMessage
+                                        name="stripe"
+                                        component="div"
+                                        className="field-error mt-3"
                                     />
                                 </div>
                             </Wizard.Page>
