@@ -227,7 +227,63 @@ class SignUp extends React.Component {
                                         <label>State</label>
                                         <Field name="state" component="select" className="form-control">
                                             <option value="">Choose State</option>
-                                            <option value="VA">VA</option>
+                                            <option value="AL">Alabama</option>
+                                            <option value="AK">Alaska</option>
+                                            <option value="AZ">Arizona</option>
+                                            <option value="AR">Arkansas</option>
+                                            <option value="CA">California</option>
+                                            <option value="CO">Colorado</option>
+                                            <option value="CT">Connecticut</option>
+                                            <option value="DE">Delaware</option>
+                                            <option value="DC">District Of Columbia</option>
+                                            <option value="FL">Florida</option>
+                                            <option value="GA">Georgia</option>
+                                            <option value="HI">Hawaii</option>
+                                            <option value="ID">Idaho</option>
+                                            <option value="IL">Illinois</option>
+                                            <option value="IN">Indiana</option>
+                                            <option value="IA">Iowa</option>
+                                            <option value="KS">Kansas</option>
+                                            <option value="KY">Kentucky</option>
+                                            <option value="LA">Louisiana</option>
+                                            <option value="ME">Maine</option>
+                                            <option value="MD">Maryland</option>
+                                            <option value="MA">Massachusetts</option>
+                                            <option value="MI">Michigan</option>
+                                            <option value="MN">Minnesota</option>
+                                            <option value="MS">Mississippi</option>
+                                            <option value="MO">Missouri</option>
+                                            <option value="MT">Montana</option>
+                                            <option value="NE">Nebraska</option>
+                                            <option value="NV">Nevada</option>
+                                            <option value="NH">New Hampshire</option>
+                                            <option value="NJ">New Jersey</option>
+                                            <option value="NM">New Mexico</option>
+                                            <option value="NY">New York</option>
+                                            <option value="NC">North Carolina</option>
+                                            <option value="ND">North Dakota</option>
+                                            <option value="OH">Ohio</option>
+                                            <option value="OK">Oklahoma</option>
+                                            <option value="OR">Oregon</option>
+                                            <option value="PA">Pennsylvania</option>
+                                            <option value="RI">Rhode Island</option>
+                                            <option value="SC">South Carolina</option>
+                                            <option value="SD">South Dakota</option>
+                                            <option value="TN">Tennessee</option>
+                                            <option value="TX">Texas</option>
+                                            <option value="UT">Utah</option>
+                                            <option value="VT">Vermont</option>
+                                            <option value="VA">Virginia</option>
+                                            <option value="WA">Washington</option>
+                                            <option value="WV">West Virginia</option>
+                                            <option value="WI">Wisconsin</option>
+                                            <option value="WY">Wyoming</option>
+                                            <option value="AS">American Samoa</option>
+                                            <option value="GU">Guam</option>
+                                            <option value="MP">Northern Mariana Islands</option>
+                                            <option value="PR">Puerto Rico</option>
+                                            <option value="UM">United States Minor Outlying Islands</option>
+                                            <option value="VI">Virgin Islands</option>
                                         </Field>
                                         <ErrorMessage name="state" component="div" className="field-error"/>
                                     </div>
@@ -387,7 +443,8 @@ class SignUp extends React.Component {
                             </Wizard.Page>
                             <Wizard.Page>
                                 <div className="form-group">
-                                    <h3>Total: $65</h3>
+                                    <h4>Total: $65</h4>
+                                    <hr/>
                                     <label>Enter your credit card information </label>
                                     <CardElement
                                         style={{base: {fontSize: '18px'}}}
@@ -402,7 +459,7 @@ class SignUp extends React.Component {
                             </Wizard.Page>
                         </Wizard>
                             ) : (
-                                <h3>Registarion is Close for the 12 Hour Race</h3>
+                                <h3>Registration is Close for the 12 Hour Race</h3>
                             )
 
                         )}
@@ -412,7 +469,7 @@ class SignUp extends React.Component {
                         <div className="row">
                             <div className="col">
                                 <ul className="list-group mb-3">
-                                    <li className="list-group-item"><string>Price:</string> $65.00</li>
+                                    <li className="list-group-item"><strong>Price:</strong> $65.00</li>
                                     <li className="list-group-item"><strong>Date:</strong> August 10, 2019</li>
                                     <li className="list-group-item"><strong>Time:</strong> 7AM - 7PM</li>
                                     <li className="list-group-item"><strong>Location:</strong> Oak Grove Lake Park</li>
