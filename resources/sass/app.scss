@@ -67,6 +67,19 @@ header.banner{
 .navbar-light .navbar-nav .nav-link.active{
   background: #ffdc3a;
 }
+.processing {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.5);
+  z-index: 9;
+  text-align: center;
+  img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+}
 .hero_img{
   position: relative;
   img.back{

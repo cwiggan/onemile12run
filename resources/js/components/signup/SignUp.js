@@ -14,6 +14,7 @@ class SignUp extends React.Component {
         thankYou: false,
         confirm: [],
         status: true,
+        loading: false,
     };
     changeCard = (event) => {
         console.log(event);
@@ -79,6 +80,7 @@ class SignUp extends React.Component {
                     <div className="row">
                     <div className="col-12 col-md-6">
                     <div className="card">
+                        {this.state.loading ? <div className="processing"><img src={'/img/ajax-loader.gif'} /></div> : null}
                         {this.state.thankYou ? (
                             <ThankYou data={this.state.confirm}/>
                         ) : (
@@ -106,12 +108,15 @@ class SignUp extends React.Component {
                                     console.log('Received Stripe token:', token.id);
                                     values.stripe = token.id;
 
+                                    this.setState({ loading: true });
+
                                     axios.post('/saveform',values).then((res) => {
                                         //console.log(res);
                                         if (res.data.success) {
                                             this.setState({
                                                 thankYou: true,
-                                                confirm: res.data.confirm
+                                                confirm: res.data.confirm,
+                                                loading: false,
                                             });
                                         }
                                     }).catch((error) => {
