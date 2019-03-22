@@ -18,12 +18,14 @@ Route::get('/', 'PageController@index')->name('home');
 //Route::name('admin')->group(function () {
 
 Route::middleware(['auth'])->prefix('admin')->group(function () {
+    Route::get('/', 'SignUpController@index');
     Route::get('/results', 'ResultsController@index');
     Route::get('/results/add', 'ResultsController@add');
     Route::post('/results/create', 'ResultsController@create');
     Route::get('/results/remove/{year}', 'ResultsController@remove');
     Route::get('/signups', 'SignUpController@index');
     Route::get('/signup/{id}/edit', 'SignUpController@edit');
+    Route::get('/signup/{id}', 'SignUpController@show');
     Route::prefix('race')->group(function () {
         Route::get('/all', 'RacesController@index');
         Route::get('new', 'RacesController@create')->middleware('auth');

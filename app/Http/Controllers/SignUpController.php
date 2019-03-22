@@ -16,7 +16,10 @@ class SignUpController extends Controller
         $signups = SignUp::all();
         return view('signups.index',compact('signups'));
     }
-
+    public function show($id) {
+        $signup = SignUp::find($id);
+        return view('signups.show',compact('signup'));
+    }
     public function edit($id) {
         $signup = SignUp::find($id);
         return view('signups.edit',compact('signup'));

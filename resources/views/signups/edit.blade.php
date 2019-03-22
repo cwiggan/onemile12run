@@ -31,16 +31,28 @@
                                 <input type="email" class="form-control" id=email" placeholder="Email" value="{{ $signup->gender }}">
                             </div>
                             <div class="form-group">
-                                <label for="email">Address</label>
-                                <input type="email" class="form-control" id=email" placeholder="Email" value="{{ $signup->address }}">
+                                <label for=eaddress">Address</label>
+                                <input type="text" class="form-control" id="address" placeholder="Email" value="{{ $signup->address }}">
                             </div>
                             <div class="form-group">
-                                <label for="email">City</label>
-                                <input type="email" class="form-control" id=email" placeholder="Email" value="{{ $signup->city }}">
+                                <label for="city">City</label>
+                                <input type="text" class="form-control" id="city" placeholder="City" value="{{ $signup->city }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="state">state</label>
+                                <input type="text" class="form-control" id="state" placeholder="State" value="{{ $signup->state }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="t_shirt">T-Shirt</label>
+                                <input type="text" class="form-control" id="t_shirt" placeholder="T Shirtl" value="{{ $signup->t_shirt }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">emergency</label>
+                                <input type="text" class="form-control" id="emergency_name" placeholder="Email" value="{{ $signup->emergency_name }}">
                             </div>
                             <div class="form-group">
                                 <label for="email">state</label>
-                                <input type="email" class="form-control" id=email" placeholder="Email" value="{{ $signup->state }}">
+                                <input type="text" class="form-control" id="emergency_phone" placeholder="Email" value="{{ $signup->emergency_phone }}">
                             </div>
                         </form>
 
