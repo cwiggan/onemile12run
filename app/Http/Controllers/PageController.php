@@ -163,6 +163,6 @@ class PageController extends Controller
 
     public function stripeCall()
     {
-        return true;
+        return response('Hello World', 200);
     }
 }
