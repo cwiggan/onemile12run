@@ -364,3 +364,8 @@ div.raceinfo{
     }
   }
 }
+@media (max-width: 767px){
+  .about img {
+    max-width: 100%;
+  }
+}
