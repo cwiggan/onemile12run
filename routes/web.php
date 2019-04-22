@@ -34,7 +34,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
         Route::post('update/{id}', 'RacesController@update')->middleware('auth');
     });
     Route::resource('contacts', 'ContactController')->only([
-        'index', 'show'
+        'index', 'show', 'update'
     ]);
     Route::resource('volunteers', 'VolunteersController')->only([
         'index', 'show'

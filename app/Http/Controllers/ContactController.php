@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Contacts;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactUs;
+
 
 class ContactController extends Controller
 {
@@ -15,7 +18,6 @@ class ContactController extends Controller
     public function index()
     {
         $contacts = Contacts::all();
-
         return view('contacts.index', compact('contacts'));
     }
 
@@ -49,7 +51,6 @@ class ContactController extends Controller
     public function show($id)
     {
         $contact = Contacts::find($id);
-
         return view('contacts.show', compact('contact'));
     }
 
@@ -61,7 +62,7 @@ class ContactController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -73,7 +74,13 @@ class ContactController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $contact = Contacts::find($id);
+        $contact->reply = $request->reply;
+        $contact->save();
+
+        Mail::to($contact->email)->send(new ContactUs($contact));
+        return back()->with('successfulCreate', 'Successful create operation.');
+
     }
 
     /**

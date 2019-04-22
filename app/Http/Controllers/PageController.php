@@ -49,8 +49,6 @@ class PageController extends Controller
         $contact->message = $request->input('message');
         $contact->save();
 
-        Mail::to('info@1milewithasmile.com')->send(new ContactUs($request->all()));
-
         return response()->json([
             'success' => true,
             'message' => 'success'

@@ -8,6 +8,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use App\Contacts;
 
 class ContactUs extends Mailable
 {
@@ -19,7 +20,7 @@ class ContactUs extends Mailable
      *
      * @return void
      */
-    public function __construct(array $data)
+    public function __construct(Contacts $data)
     {
         $this->data = $data;
     }
@@ -31,6 +32,6 @@ class ContactUs extends Mailable
      */
     public function build()
     {
-        return $this->from($this->data['email'])->view('mail.contact');
+        return $this->from('info@1milewithasmile.com')->subject('Reply: One Mile With A Smile')->view('mail.contact');
     }
 }
