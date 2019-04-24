@@ -109,7 +109,7 @@ class PageController extends Controller
             $signUp->city = $request->input('city');
             $signUp->state = $request->input('state');
             $signUp->zip_code = $request->input('zip_code');
-            $signUp->birth_date = $request->birth_date;
+            $signUp->birth_date = date("Y-m-d h:i:s",strtotime($request->birth_date));
             $signUp->gender = $request->input('gender');
             $signUp->t_shirt = $request->input('t_shirt');
             $signUp->emergency_phone = $request->input('emergency_phone');

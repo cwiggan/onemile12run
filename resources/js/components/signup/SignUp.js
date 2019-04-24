@@ -47,9 +47,7 @@ class SignUp extends React.Component {
             email: Yup.string()
                 .email('Enter a Valid Email')
                 .required('Enter your Email'),
-            phone: Yup.string()
-                .min(10, 'Must Be ten digits')
-                .required('Enter Your Phone'),
+            phone: Yup.string().matches(/^[2-9]\d{9}$/, {message: "Please enter valid 10 Digit Phone Number. No Space or Dash", excludeEmptyString: false}),
             birth_date: Yup.date()
                 .required('Enter your Birthday'),
         });
@@ -105,7 +103,6 @@ class SignUp extends React.Component {
                             }}
                             onSubmit={(values, actions) => {
                                 this.props.stripe.createToken({name: values.first_name }).then(({token}) => {
-                                    //console.log('Received Stripe token:', token.id);
                                     values.stripe = token.id;
 
                                     this.setState({ loading: true });
