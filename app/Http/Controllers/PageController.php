@@ -13,6 +13,7 @@ use App\Mail\ContactUs;
 use App\Mail\Volunteer;
 use App\Volunteers;
 use App\Contacts;
+use Config;
 
 class PageController extends Controller
 {
@@ -151,7 +152,7 @@ class PageController extends Controller
     }
 
     public function countSignUp() {
-        $count = SignUp::where('race_id', 1)->get()->count();
+        $count = SignUp::where('race_id', 1)->get()->count() + Config::get('runner.count'); //dd($count);
         $status = $count <= 60 ? true : false;
 
         return response()->json([
