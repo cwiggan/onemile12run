@@ -19,6 +19,7 @@
                                 <th scope="col">Transaction Id</th>
                                 <th scope="col">State</th>
                                 <th scope="col">Action</th>
+                                <th scope="col">T-Shit</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -30,6 +31,7 @@
                                     <td>{{ $signup->transaction_id }}</td>
                                     <td>{{ $signup->city }}</td>
                                     <td>{{ $signup->state }}</td>
+                                    <td>{{ $signup->t_shirt }}</td>
                                     <td>
                                         <a class="btn btn-primary btn-sm" href="/admin/signup/{{ $signup->id }}">view</a>
                                         <a class="btn btn-primary btn-sm" href="/admin/signup/{{ $signup->id }}/edit">edit</a>
