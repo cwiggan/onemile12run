@@ -35,6 +35,7 @@ class SignUpController extends Controller
         }
     }
     public function export() {
-        return Excel::download(new OrderExport, 'raceorder.xlsx');
+        //return Excel::download(new OrderExport, 'raceorder.xlsx');
+        return (new OrderExport)->download('raceorders.csv', \Maatwebsite\Excel\Excel::CSV);
     }
 }
