@@ -38,6 +38,7 @@
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="signupDropdown">
                     <a class="dropdown-item" href="/admin/signups/add">Add Sign Up</a>
                     <a class="dropdown-item" href="/admin/signups">View Sign Ups</a>
+                    <a class="dropdown-item" href="/admin/signups/down">Export Sign Ups</a>
                 </div>
             </li>
             <li class="nav-item dropdown">

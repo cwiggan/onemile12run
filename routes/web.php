@@ -26,6 +26,8 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/signups', 'SignUpController@index');
     Route::get('/signup/{id}/edit', 'SignUpController@edit');
     Route::get('/signup/{id}', 'SignUpController@show');
+    Route::get('/signups/t-shirts', 'SignUpController@shirts');
+    Route::get('/signups/down', 'SignUpController@export');
     Route::prefix('race')->group(function () {
         Route::get('/all', 'RacesController@index');
         Route::get('new', 'RacesController@create')->middleware('auth');

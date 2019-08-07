@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\SignUp;
+use DB;
+use App\Exports\OrderExport;
+use Excel;
 
 class SignUpController extends Controller
 {
@@ -23,5 +26,15 @@ class SignUpController extends Controller
     public function edit($id) {
         $signup = SignUp::find($id);
         return view('signups.edit',compact('signup'));
+    }
+    public function shirts() {
+        $shirts = SignUp::select(DB::Raw('t_shirt, COUNT(*) as count'))
+            ->groupBy('t_shirt');
+        foreach ($shirts as $shirt) {
+            dd($shirt);
+        }
+    }
+    public function export() {
+        return Excel::download(new OrderExport, 'raceorder.xlsx');
     }
 }
