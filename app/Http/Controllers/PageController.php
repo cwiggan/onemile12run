@@ -139,7 +139,7 @@ class PageController extends Controller
         }
     }
 
-    public function getResults($year=2018) {
+    public function getResults($year=2019) {
         if ($year != 'all') {
             $results = RaceResult::where('year', $year)->orderBy('distance', 'desc')->get();
         } else {
