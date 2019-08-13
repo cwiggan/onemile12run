@@ -26,6 +26,12 @@ class ResultsController extends Controller
         return view('results.index', compact('results'));
     }
 
+    public function byyear($year)
+    {
+        $results = RaceResult::where('year', $year)->orderBy('distance', 'desc')->get();
+        return view('results.index', compact('results'));
+    }
+
     public function add()
     {
         return view('results.add');
@@ -40,5 +46,20 @@ class ResultsController extends Controller
     public function remove($year)
     {
         RaceResult::where('year', $year)->delete();
+    }
+
+    public function edit($id)
+    {
+        $result = RaceResult::find($id);
+        return view('results.edit', compact('result'));
+    }
+    public function update(Request $request, $id)
+    {
+        $results = RaceResult::find($id);
+        $results->laps = $request->laps;
+        $results->distance = $request->distance;
+        $results->save();
+       // dd($results);
+        return redirect('/admin/results/'.$results->year)->with('status', 'Results Updated');
     }
 }

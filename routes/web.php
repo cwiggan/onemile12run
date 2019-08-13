@@ -23,6 +23,9 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/results/add', 'ResultsController@add');
     Route::post('/results/create', 'ResultsController@create');
     Route::get('/results/remove/{year}', 'ResultsController@remove');
+    Route::get('/results/{year}', 'ResultsController@byyear');
+    Route::get('/results/edit/{id}', 'ResultsController@edit');
+    Route::post('/results/update/{id}', 'ResultsController@update');
     Route::get('/signups', 'SignUpController@index');
     Route::get('/signup/{id}/edit', 'SignUpController@edit');
     Route::get('/signup/{id}', 'SignUpController@show');

@@ -17,6 +17,7 @@
                                 <th scope="col">Last</th>
                                 <th scope="col">Distance</th>
                                 <th scope="col">Year</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -27,6 +28,7 @@
                                 <td>{{ $result->last_name }}</td>
                                 <td>{{ $result->distance }}</td>
                                 <td>{{ $result->year }}</td>
+                                <td><a href="/admin/results/edit/{{ $result->id }}">edit</a> </td>
                             </tr>
                         @endforeach
                             </tbody>
