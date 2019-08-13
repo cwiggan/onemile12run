@@ -26,7 +26,7 @@ class AddDistanceFloatTable extends Migration
     public function down()
     {
         Schema::table('race_results', function (Blueprint $table) {
-            //
+            $table->integer('distance')->change();
         });
     }
 }
