@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Imports\ResultsImport;
+use App\Exports\ResultsExport;
 use Excel;
 use Log;
 use App\RaceResult;
@@ -53,6 +54,7 @@ class ResultsController extends Controller
         $result = RaceResult::find($id);
         return view('results.edit', compact('result'));
     }
+
     public function update(Request $request, $id)
     {
         $results = RaceResult::find($id);
@@ -61,5 +63,10 @@ class ResultsController extends Controller
         $results->save();
        // dd($results);
         return redirect('/admin/results/'.$results->year)->with('status', 'Results Updated');
+    }
+
+    public function export($year)
+    {
+        return Excel::download(new ResultsExport($year), 'results.xlsx');
     }
 }
