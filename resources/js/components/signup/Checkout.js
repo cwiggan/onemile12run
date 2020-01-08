@@ -4,7 +4,7 @@ import SignUp from './SignUp';
 
 const Checkout = () => { //
     return (
-        <StripeProvider apiKey="pk_live_fVbRODvNz7PrhvY3Nz4AIYdC">
+        <StripeProvider apiKey={process.env.MIX_STRIPE_PUBLIC}>
             <Elements>
                 <SignUp />
             </Elements>
